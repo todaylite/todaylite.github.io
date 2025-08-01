@@ -1,32 +1,517 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Post - News Today</title>
-  <link rel="stylesheet" href="style.css"/>
+  <title>Todaylite</title>
+  <style>
+  	.hamburger {
+  	background:red;height:auto;
+  display:block;
+  font-size: 26px;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+  
+  
+#wsite-title{
+	font-size: 2em;       /* h1 size */
+  font-weight: bold;
+  background: linear-gradient(90deg, #ff7e5f, #feb47b, #86a8e7, #7f7fd5);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient-animation 3s ease-in-out infinite;
+  background-size: 300%;
+  margin:0;
+}
+
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.headbtn{
+      background: #000;
+      color: white;
+      padding: 10px 15px;
+      border-radius:50px;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+</style>
+
+  <style>
+    body {
+      margin: 0;
+      background: #f2f5fc;
+      font-family: Arial, sans-serif;
+    }
+
+    headerz {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      
+      
+      
+    }
+    header{
+  background:white;
+  padding: 1rem 0;
+  text-align: center;
+  position: fixed;
+      top: 0;
+      width: 100%;
+  color: white;
+  z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      max-width: 1200px;
+      margin: 95px auto 40px;
+      padding: 0 10px;
+      gap: 20px;
+    }
+
+    main {
+      flex: 3;
+    }
+
+    aside {
+      flex: 1;
+    }
+
+    .post-card {
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .post-card img {
+      width: 100%;
+      height: auto;
+    }
+
+    .post-content {
+      padding: 15px;
+      position: relative;
+    }
+
+    .post-title {
+      font-size: 1.3em;
+      margin: 10px 0;
+      color: #000;
+    }
+
+    .post-excerpt {
+      color: #444;
+    }
+
+    .post-meta {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 15px;
+      align-items: center;
+    }
+
+    .date {
+      color: #555;
+      font-size: 0.9em;
+    }
+
+    .read-more {
+      background: #000;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 25px;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .read-more:hover {
+      background: #007bff;
+      color: white;
+    }
+
+    aside {
+      background:transparent;
+      border-radius: 10px;
+      height: fit-content;
+    }
+
+    aside h2 {
+      font-size: 1.2em;
+      margin-bottom: 10px;
+    }
+
+    .popular-post {
+      margin-bottom: 10px;
+      font-size: 0.95em;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 5px;
+    }
+
+    footer {
+      background: #1a1a1a;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 30px;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+      }
+    }
+    
+    
+    
+     .menu-icon {
+      width: 25px;
+      height: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      cursor: pointer;
+    }
+
+    .menu-icon div {
+      height: 4px;
+      background: red;
+      border-radius: 2px;
+    }
+
+    .divdemo1{
+background: white;
+      border-radius: 10px;
+      padding: 15px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      height: fit-content;
+      margin-bottom: 20px;
+}
+
+.post-container2{     
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+      display: flex;
+      flex-direction: column;
+      padding:20px;
+      background:white;
+    }
+    
+    .post-container2 img {
+      width: 100%;
+      height: auto;
+      border-radius:10px;      
+    }
+    
+      .post-title {
+      font-size: 2em;
+      margin-bottom: 10px;
+      color: #000;
+    }
+
+    .post-meta {
+      color: #666;
+      font-size: 0.9em;
+      margin-bottom: 20px;
+      border-top: 1px solid #ddd;
+      border-bottom: 1px solid #ddd;
+      padding-top:10px;
+      padding-bottom:10px;    
+    }
+    
+    
+    .post-content h2 {
+      font-size: 1.5em;
+      margin: 25px 0 10px;
+      color: #111;
+    }
+       .post-content p {
+      font-size: 1.05em;
+      line-height: 1.7;
+      color: #333;
+      margin-bottom: 16px;
+    }
+        .post-image {
+      width: 100%;
+      max-height: 400px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+    
+    
+    
+    
+    
+     #toc {
+      background: #fff;
+      padding: 15px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      margin-bottom: 20px;
+      max-width: 300px;
+    }
+
+    #toc .toc-header {
+      font-weight: bold;
+      margin-bottom: 10px;
+      font-size: 18px;
+      color: #333;
+    }
+
+    #toc ul {
+      list-style-type: disc; /* • bullets */
+      padding-left: 20px;
+    }
+
+    #toc li {
+      margin-bottom: 5px;
+    }
+
+    #toc a {
+      text-decoration: none;
+      color: #333;
+      font-size: 14px;
+    }
+
+    #toc a:hover {
+      color: #007bff;
+    }
+
+
+
+
+
+}
+#toc .toc-header {
+  font-weight: bold;
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+#toc ol {
+  list-style-type: number; /* show dots instead of numbers */
+  padding-left: 20px;
+  margin: 0;
+}
+#toc li {
+  margin: 6px 0;
+}
+#toc a {
+  text-decoration: none;
+  color: #333;
+}
+#toc a:hover {
+  text-decoration: underline;
+  color: #007BFF;
+}
+
+
+  </style>
 </head>
 <body>
+
   <header>
-    <div class="container">
-      <h1>News Today</h1>
-      <nav>
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-      </nav>
-    </div>
+    <div id="wsite-title"><a href="https://todaylite.github.io/">TODAYLITE</a></div>
+               
+
   </header>
 
-  <main class="container" style="padding:2rem 0">
-    <h2>Breaking News: Something Big Happened</h2>
-    <p><em>Published on July 30, 2025</em></p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eget ligula in velit suscipit fermentum. Maecenas in facilisis ante.</p>
-  </main>
+  <div class="container">
+    <main>
+    	
+    	 <!-- Blog Post Start -->
+      <div class="post-container2">
+      	  <h2 class="post-title">How to Improve Your Credit Score in 2025</h2>
+    <div class="post-meta">Published on July 31, 2025 | Author : Akshay</div>
+        <img src="https://images.unsplash.com/photo-1558637845-c8b7ead71a3e?w=1200&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8MTYlM0E5fGVufDB8fDB8fHww" class="post-image" alt="">
+        
+        
+        
+          <p class="post-excerpt"><b>Quick Summary</b> :This is a short paragraph summary for the blog post. It gives a quick overview of the content.This is a short paragraph summary for the blog post. It gives a quick overview of the content.</p>
+          
+
+          
+          
+          
+          
+      <p>Your credit score plays a vital role in determining your financial credibility. In 2025, lenders are more data-driven than ever. Here's how to stay ahead.</p>
+      
+      
+      <ol  id="toc"> </ol>
+      
+
+      <h2>Pay Your Bills on Time</h2>
+      <p>Payment history is the most significant factor in your credit score. Automate payments to never miss a due date.</p>
+
+      <h2>Reduce Credit Card Balances</h2>
+      <p>Keep your credit utilization ratio below 30%. This shows lenders you’re not over-reliant on credit.</p>
+<h3>This h3 tag</h3>
+      <h2>Don’t Close Old Accounts</h2>
+      <p>Older accounts show a long credit history, which benefits your score even if they're unused.</p>
+
+      <h2>Monitor Your Credit Report</h2>
+      <p>Use free services or government portals to check for errors and dispute them immediately.Improving your credit score takes consistency and discipline. Start now to enjoy better loan offers, lower interest rates, and financial peace of mind.</p>
+      <h2>Monitor Your Credit Report</h2>
+      <p>Use free services or government portals to check for errors and dispute them immediately.Improving your credit score takes consistency and discipline. Start now to enjoy better loan offers, lower interest rates, and financial peace of mind.</p>
+      <h2>Monitor Your Credit Report</h2>
+      <p>Use free services or government portals to check for errors and dispute them immediately.Improving your credit score takes consistency and discipline. Start now to enjoy better loan offers, lower interest rates, and financial peace of mind.</p>
+      
+    <h2>Monitor Your Credit Report</h2>
+      <p>Use free services or government portals to check for errors and dispute them immediately.Improving your credit score takes consistency and discipline. Start now to enjoy better loan offers, lower interest rates, and financial peace of mind.</p>
+      
+<h2>Monitor Your Credit Report</h2>
+      <p>Use free services or government portals to check for errors and dispute them immediately.Improving your credit score takes consistency and discipline. Start now to enjoy better loan offers, lower interest rates, and financial peace of mind.Use free services or government portals to check for errors and dispute them immediately.Improving your credit score takes consistency and discipline. Start now to enjoy better loan offers, lower interest rates, and financial peace of mind.Use free services or government portals to check for errors and dispute them immediately.Improving your credit score takes consistency and discipline. Start now to enjoy better loan offers, lower interest rates, and financial peace of mind.Use free services or government portals to check for errors and dispute them immediately.Improving your credit score takes consistency and discipline. Start now to enjoy better loan offers, lower interest rates, and financial peace of mind.Use free services or government portals to check for errors and dispute them immediately.Improving your credit score takes consistency and discipline. Start now to enjoy better loan offers, lower interest rates, and financial peace of mind.Use free services or government portals to check for errors and dispute them immediately.Improving your credit score takes consistency and discipline. Start now to enjoy better loan offers, lower interest rates, and financial peace of mind.Use free services or government portals to check for errors and dispute them immediately.Improving your credit score takes consistency and discipline. Start now to enjoy better loan offers, lower interest rates, and financial peace of mind.Use free services or government portals to check for errors and dispute them immediately.Improving your credit score takes consistency and discipline. Start now to enjoy better loan offers, lower interest rates, and financial peace of mind.Use free services or government portals to check for errors and dispute them immediately.Improving your credit score takes consistency and discipline. Start now to enjoy better loan offers, lower interest rates, and financial peace of mind.</p>
+      <h2>Monitor Your Credit Report</h2>
+      <p>Use free services or government portals to check for errors and dispute them immediately.Improving your credit score takes consistency and discipline. Start now to enjoy better loan offers, lower interest rates, and financial peace of mind.</p>
+          
+          
+          
+ 
+
+
+<div class="post-meta">
+<span class="date">AKSHAYGX</span>
+<a href="#" class="read-more">Follow  Us</a>
+  </div>
+ 
+
+          
+          
+          
+          
+          
+        </div>
+      
+<!-- Blog Post End -->
+
+
+      <div class="post-card">
+        <img src="https://images.unsplash.com/photo-1626593261859-4fe4865d8cb1?w=1200&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fDE2JTNBOXxlbnwwfHwwfHx8MA%3D%3D" alt="Post image">
+        <div class="post-content">
+          <h2 class="post-title">Another Blog Title</h2>
+          <p class="post-excerpt">Second blog post summary here. Brief and catchy introduction to the topic.</p>
+          
+<div class="post-meta">
+<span class="date">July 30, 2025</span>
+<a href="#" class="read-more">Read More</a>
+ </div>
+  
+  
+        </div>
+      </div>
+      
+     
+      
+      
+    </main>
+
+<!-- Sidebar Open-->
+ <aside>
+ <!-- PopularPost Open-->
+<div class="divdemo1">
+<h2>Popular Posts 2</h2>
+ <div class="popular-post">✔ Post1</div>
+<div class="popular-post">✔ Post2</div>
+<div class="popular-post">✔ Post2</div>
+</div>
+<!-- PopularPost Closed-->
+
+<!-- Category Open-->
+<div class="divdemo1">
+<h2>Category</h2>
+ <div class="popular-post">✔ Category1</div>
+<div class="popular-post">✔ Category2</div>
+<div class="popular-post">✔ Category3</div>
+</div>
+<!-- Category Closed-->
+    </aside>
+
+<!-- Sidebar Closed -->
+    
+    
+  </div>
 
   <footer>
-    <div class="container">
-      <p>&copy; 2025 News Today. All rights reserved.</p>
-    </div>
+    &copy; 2025 Todaylite. All rights reserved.
   </footer>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const toc = document.querySelector('#toc');
+    const postContainer = document.querySelector('.post-container2');
+    const headings = postContainer.querySelectorAll('h1, h2, h3, h4, h5, h6');
+
+    if (headings.length > 0 && toc) {
+      const isOrdered = toc.tagName.toLowerCase() === 'ol';
+      const tocList = document.createElement(toc.tagName.toLowerCase()); // ol or ul
+      tocList.classList.add('toc-list');
+      const header = document.createElement('div');
+      header.className = 'toc-header';
+      header.textContent = 'Table of Contents';
+
+      toc.innerHTML = '';
+      toc.appendChild(header);
+      toc.appendChild(tocList);
+
+      let currentLevel = parseInt(headings[0].tagName[1]);
+      let parents = [tocList];
+
+      headings.forEach((heading, index) => {
+        const level = parseInt(heading.tagName[1]);
+
+        if (!heading.id) {
+          heading.id = 'heading-' + index;
+        }
+
+        const li = document.createElement('li');
+        const link = document.createElement('a');
+        link.href = '#' + heading.id;
+        link.textContent = heading.textContent;
+        li.appendChild(link);
+
+        if (level > currentLevel) {
+          const nestedList = document.createElement(toc.tagName.toLowerCase());
+          const lastLi = parents[parents.length - 1].lastElementChild;
+          if (lastLi) {
+            lastLi.appendChild(nestedList);
+            parents.push(nestedList);
+          }
+        } else if (level < currentLevel) {
+          parents.splice(level - currentLevel);
+        }
+
+        currentLevel = level;
+        parents[parents.length - 1].appendChild(li);
+      });
+    }
+  });
+</script>
+
+
+
+
+
+
 </body>
 </html>
