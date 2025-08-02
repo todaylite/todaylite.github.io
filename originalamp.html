@@ -72,6 +72,42 @@
         }
       </style></noscript
     >
+    	<style amp-custom>
+      amp-story {
+        font-family: 'Arial', sans-serif;
+        color: #fff;
+      }
+
+      .gradient-tag {
+        background: linear-gradient(45deg, #FF4E50, #F9D423);
+        color: white;
+        padding: 8px 18px;
+        font-size: 16px;
+        font-weight: bold;
+        border-radius: 10px;
+        display: inline-block;
+        margin-bottom: 15px;
+      }
+
+      .story-text-box {
+        background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+        padding: 20px;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+      }
+
+      .desc {
+        font-size: 15px;
+        line-height: 1.6;
+        margin-bottom: 10px;
+      }
+
+      .credit {
+        font-size: 13px;
+        color: #aaa;
+      }
+    </style>
   </head>
   <body>
     <amp-story
@@ -91,6 +127,18 @@
           >
           </amp-img>
         </amp-story-grid-layer>
+        
+        <amp-story-grid-layer template="vertical">
+          <div class="story-text-box">
+            <div class="gradient-tag">FANCY LOOK</div>
+            <div class="desc">
+              If you are planning to wear any brown outfit like the diva, you can opt for this smoky makeup look. It will perfectly complement your attire.
+            </div>
+            <div class="credit">Image Credit: Instagram</div>
+          </div>
+        </amp-story-grid-layer>
+        
+        
         <amp-story-grid-layer template="vertical">
           <h1>Hello, amp-story!</h1>
         </amp-story-grid-layer>
@@ -105,10 +153,50 @@
           >
           </amp-img>
         </amp-story-grid-layer>
+        
+        <amp-story-grid-layer template="vertical">
+          <div class="story-text-box">
+            <div class="gradient-tag">SMOKY LOOK</div>
+            <div class="desc">
+              If you are planning to wear any brown outfit like the diva, you can opt for this smoky makeup look. It will perfectly complement your attire.
+            </div>
+            <div class="credit">Image Credit: Instagram</div>
+          </div>
+        </amp-story-grid-layer>
+        
         <amp-story-grid-layer template="vertical">
           <h1>The End</h1>
         </amp-story-grid-layer>
       </amp-story-page>
+      
+      
+      
+  <amp-story-page id="my-first-page3">
+    <amp-story-grid-layer template="fill">
+      <amp-img
+        src="https://wallpapers.com/images/featured/krishna-phone-xkiy1wgsy4hz5lwx.jpg"
+        width="900"
+        height="1600"
+        alt=""
+      ></amp-img>
+    </amp-story-grid-layer>
+    
+    <amp-story-grid-layer template="vertical">
+      <div class="story-text-box">
+        <div class="gradient-tag">Loved ❤</div>
+        <div class="desc">
+          This is text area
+        </div>
+        <div class="credit">Akshay</div>
+      </div>
+    </amp-story-grid-layer>
+  </amp-story-page>
+
+ 
+      
+      
+      
+      
     </amp-story>
   </body>
 </html>
