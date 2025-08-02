@@ -1,1 +1,186 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Visual Stories - Todaylite</title>
+  <style>
+  	a {
+  text-decoration: none;
+}
+    body {
+      font-family: sans-serif;
+      background: #f2f2f2;
+      margin: 0;
+      padding: 20px;
+    }
 
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .categories {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .categories button {
+      background: #eee;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 15px;
+    }
+
+    .categories button.active {
+      background: red;
+      color: white;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .story {
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      transition: transform 0.2s;
+      margin:10px;
+    }
+
+    .story:hover {
+      transform: scale(1.02);
+    }
+
+    .story img {
+      width: 100%;
+      height:500px;
+      object-fit: cover;border-radius: 10px;
+    }
+
+    .story-content {
+      padding: 10px 15px;
+    }
+
+
+.story .play-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0,0,0,0.6);
+  color: white;
+  font-size: 32px;
+  padding: 15px 20px;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+    .category {
+      color: red;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .title {
+      font-size: 16px;
+      font-weight: bold;
+      margin: 5px 0;
+    }
+
+    .date {
+      font-size: 13px;
+      color: #666;
+    }
+
+    .story[data-cat] {
+      display: none;
+    }
+
+    .story[data-cat="All"],
+    .story.show {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Web Stories</h1>
+
+  <div class="categories">
+    <button class="active" data-filter="All">All</button>
+    <button data-filter="मनोरंजन">मनोरंजन</button>
+    <button data-filter="ट्रेंडिंग">ट्रेंडिंग</button>
+    <button data-filter="स्पोर्ट्स">स्पोर्ट्स</button>
+    <button data-filter="लाइफस्टाइल">लाइफस्टाइल</button>
+  </div>
+
+  <div class="grid" id="storyGrid">
+
+    <!-- STORY CARD START -->
+    <a href="https://todaylite.github.io/web-stories/story1.html" class="story" data-cat="ट्रेंडिंग">
+      <img src="https://wallpapers.com/images/featured/krishna-phone-xkiy1wgsy4hz5lwx.jpg" alt="Mushroom">
+      <span class="play-btn">▶</span></img>
+      <div class="story-content">
+        <div class="category">ट्रेंडिंग</div>
+        <div class="title">तस्वीर में छिपा है Mushroom, 10 सेकंड में खोजने का चैलेंज</div>
+        <div class="date">August 02, 2025</div>
+      </div>
+    </a>
+
+    <a href="https://todaylite.github.io/web-stories/story1.html" class="story" data-cat="मनोरंजन">
+      <img src="https://i.pinimg.com/originals/d9/52/af/d952afeaf6825feca1fdfa9ed11ec435.jpg" alt="YouTuber">
+      <div class="story-content">
+        <div class="category">मनोरंजन</div>
+        <div class="title">सालों से प्यार में क्लोज़अप यूट्यूबर, क्यों छुपा रहे थे रिश्ता?</div>
+        <div class="date">August 02, 2025</div>
+      </div>
+    </a>
+
+    <a href="https://todaylite.github.io/web-stories/story1.html" class="story" data-cat="मनोरंजन">
+      <img src="https://w0.peakpx.com/wallpaper/112/244/HD-wallpaper-flowers-nature-red.jpg" alt="Actress">
+      <div class="story-content">
+        <div class="category">मनोरंजन</div>
+        <div class="title">फिट हुईं एक्ट्रेस, बॉडी पर सालों की मेहनत, दिखा दिया ट्रांसफॉर्मेशन</div>
+        <div class="date">August 02, 2025</div>
+      </div>
+    </a>
+
+    <!-- Add more stories below -->
+
+  </div>
+
+  <script>
+    const buttons = document.querySelectorAll(".categories button");
+    const stories = document.querySelectorAll(".story");
+
+    buttons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        buttons.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        const cat = btn.dataset.filter;
+
+        stories.forEach(story => {
+          story.classList.remove("show");
+          if (cat === "All" || story.dataset.cat === cat) {
+            story.classList.add("show");
+          }
+        });
+      });
+    });
+
+    // Show all on load
+    document.querySelectorAll('.story').forEach(s => s.classList.add('show'));
+  </script>
+
+</body>
+</html>
