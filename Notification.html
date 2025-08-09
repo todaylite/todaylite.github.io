@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Notification Permission Example</title>
+</head>
+<body>
+  <h1>Browser Notification Example</h1>
+  <button id="notifyBtn">Request Notification Permission & Show Notification</button>
+
+  <script>
+    const notifyBtn = document.getElementById("notifyBtn");
+
+    notifyBtn.addEventListener("click", () => {
+      if (!("Notification" in window)) {
+        alert("This browser does not support notifications.");
+        return;
+      }
+
+      Notification.requestPermission().then(permission => {
+        if (permission === "granted") {
+          console.log("Notification permission granted.");
+          new Notification("Hello!", {
+            body: "This is a test notification.",
+            icon: "https://via.placeholder.com/128"  // optional icon
+          });
+        } else if (permission === "denied") {
+          console.log("Notification permission denied.");
+          alert("Notification permission was denied.");
+        } else {
+          console.log("Notification permission dismissed or default.");
+          alert("Notification permission request was dismissed.");
+        }
+      });
+    });
+  </script>
+</body>
+</html>
