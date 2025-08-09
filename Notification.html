@@ -76,5 +76,32 @@
   const app = initializeApp(firebaseConfig);
   const analytics = getAnalytics(app);
 </script>
+
+<script>
+// Service Worker registration code
+navigator.serviceWorker.register('service-worker.js').then(function(registration) {
+  console.log('Service Worker registered with scope:', registration.scope);
+
+  // Subscribe user to push (define this function in your script)
+  subscribeUserToPush(registration);
+
+}).catch(function(error) {
+  console.error('Service Worker registration failed:', error);
+});
+
+// Sample subscribeUserToPush function - you need this
+function subscribeUserToPush(registration) {
+  // Here you will ask for push subscription etc.
+  // For test purpose, just show notification like this:
+  registration.showNotification('Test Notification', {
+    body: 'Push notifications are working!',
+    icon: '/icon.png'
+  });
+}
+</script>
+
+
+
+  
 </body>
 </html>
