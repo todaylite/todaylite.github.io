@@ -6,13 +6,11 @@
   <title>Notification Permission Example</title>
 </head>
 <body>
-  <h1>Browser Notification Example</h1>
-  <button id="notifyBtn">Request Notification Permission & Show Notification</button>
+  <h1>Enable Notifications</h1>
+  <button id="notifyBtn">Click to Enable Notification</button>
 
   <script>
-    const notifyBtn = document.getElementById("notifyBtn");
-
-    notifyBtn.addEventListener("click", () => {
+    document.getElementById("notifyBtn").addEventListener("click", () => {
       if (!("Notification" in window)) {
         alert("This browser does not support notifications.");
         return;
@@ -20,17 +18,17 @@
 
       Notification.requestPermission().then(permission => {
         if (permission === "granted") {
-          console.log("Notification permission granted.");
-          new Notification("Hello!", {
-            body: "This is a test notification.",
-            icon: "https://via.placeholder.com/128"  // optional icon
+          new Notification("Notification enabled!", {
+            body: "Thanks for enabling notifications.",
+            icon: "https://via.placeholder.com/128"
           });
+          console.log("Notification permission granted.");
         } else if (permission === "denied") {
+          alert("Notification permission denied.");
           console.log("Notification permission denied.");
-          alert("Notification permission was denied.");
         } else {
-          console.log("Notification permission dismissed or default.");
-          alert("Notification permission request was dismissed.");
+          alert("Notification permission request dismissed.");
+          console.log("Notification permission dismissed.");
         }
       });
     });
