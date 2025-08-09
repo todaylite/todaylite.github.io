@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Firebase Share Counter</title>
+</head>
+<body>
+
+<h2>My Article</h2>
+<button id="shareBtn">Share Article</button>
+<p>Total Shares: <span id="shareCount">0</span></p>
+
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+
+<script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyCvS35O-TEWh7YBA28sXa1VEzozwOYR6Y4",
+    authDomain: "todaylite-github-share.firebaseapp.com",
+    databaseURL: "https://todaylite-github-share-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "todaylite-github-share",
+    storageBucket: "todaylite-github-share.firebasestorage.app",
+    messagingSenderId: "149613187050",
+    appId: "1:149613187050:web:87e2e35d4e76924ceaac93",
+    measurementId: "G-KD18PK3VBZ"
+  };
+
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.database();
+
+  // Dynamic articleId based on page URL or manually set per page
+  const articleId = window.location.pathname.replace(/\//g, "-").substring(1) || "default-article";
+  // Example: "/article1.html" => "article1.html"
+  // ya agar tumhare URL me /article-1/ ho to => "article-1"
+
+  const shareCountRef = db.ref("shares/" + articleId);
+
+  // Show live share count
+  shareCountRef.on("value", (snapshot) => {
+    document.getElementById("shareCount").textContent = snapshot.val() || 0;
+  });
+
+  // Increment on click
+  document.getElementById("shareBtn").addEventListener("click", () => {
+    shareCountRef.transaction((current) => (current || 0) + 1);
+  });
+</script>
+
+</body>
+</html>
