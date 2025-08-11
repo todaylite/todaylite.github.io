@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="google-site-verification" content="poNBfHrvDAlmcsKr_VrMQgtMtQKhJa0lpFDXfWAt54Y" />
+ <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-189M5X01BR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-189M5X01BR');
+</script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>6-Month Backtest Results of 5StarsStocks Picks | TodayLite</title>
+  <meta name="description" content="TodayLite shows a reproducible 6-month backtest methodology for 5StarsStocks.com picks, explains how to run the test, how to interpret results, and provides an example table and templates you can use to verify performance yourself.">
+  <meta name="keywords" content="5StarsStocks backtest, 6 month backtest, backtesting stock picks, 5StarsStocks performance, TodayLite stock analysis" />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="TodayLite" />
+</head>
+<body>
+<article class="article-content">
+
+  <h1>6-Month Backtest Results of 5StarsStocks Picks</h1>
+
+  <div style="background:#f7fbff;border-left:5px solid #1976d2;padding:12px;margin-bottom:18px;">
+    <strong>Quick Summary:</strong> This TodayLite article does <em>not</em> publish unverified performance claims. Instead it gives a transparent, reproducible 6-month backtest method to evaluate 5StarsStocks.com picks, shows how to run the test, and provides an example (illustrative only) so you can verify results yourself.
+  </div>
+
+  <h2>Why a reproducible backtest matters</h2>
+  <p>Platforms often publish performance snapshots without full methodology. A trustworthy backtest must define rules clearly (entry/exit, fees, dividends, slippage, rebalancing) so anyone can reproduce the numbers. Below we give a step-by-step method you can run yourself and an example template.</p>
+
+  <h2>Backtest objective</h2>
+  <p>Measure the hypothetical performance of top-rated (4 &amp; 5 star) stock picks signalled by 5StarsStocks.com over a continuous 6-month window, using clear, conservative assumptions.</p>
+
+  <h2>Define the rules (required)</h2>
+  <ul>
+    <li><strong>Universe:</strong> Stocks that received 4 or 5 stars on 5StarsStocks on the signal date.</li>
+    <li><strong>Signal date:</strong> The date the stock first appears as 4/5 stars within the 6-month test period.</li>
+    <li><strong>Entry price:</strong> Next market open price after the signal date.</li>
+    <li><strong>Exit rule:</strong> Hold for 30 calendar days (example), or exit earlier if rating drops to 2 stars — choose one and be consistent.</li>
+    <li><strong>Position sizing:</strong> Equal weight per trade (e.g., fixed $ amount or equal % of portfolio).</li>
+    <li><strong>Costs & slippage:</strong> Subtract realistic trading cost (e.g., 0.1% roundtrip) and assume 0.2% slippage on entry/exit for conservatism.</li>
+    <li><strong>Dividends & corporate actions:</strong> Include dividends if they occur during the holding period; adjust returns for splits.</li>
+    <li><strong>Data sources:</strong> Use exchange-level price data (e.g., Yahoo Finance, Alpha Vantage, or your broker) and archive the 5StarsStocks rating snapshots (screenshots or API if available).</li>
+  </ul>
+
+  <h2>Step-by-step backtest process</h2>
+  <ol>
+    <li><strong>Gather signals:</strong> For each day in your 6-month window, record tickers that show 4/5 stars on 5StarsStocks and the date/time (screenshot or API export for proof).</li>
+    <li><strong>Record entry price:</strong> Take the next market open price (or next available trade price) after the signal.</li>
+    <li><strong>Apply exit rule:</strong> Determine the exit date and record the exit price (close price on exit date or next open).</li>
+    <li><strong>Calculate per-trade return:</strong> (ExitPrice − EntryPrice) / EntryPrice − costs − slippage + dividends (if any).</li>
+    <li><strong>Aggregate results:</strong> Compute average return, median return, win rate (% trades positive), maximum drawdown, and annualized equivalent if desired.</li>
+    <li><strong>Compare benchmark:</strong> Run the same period performance for a benchmark (S&P 500 / relevant index) to contextualize results.</li>
+    <li><strong>Document everything:</strong> Save raw CSVs, timestamps, and screenshots — transparency is essential for credibility.</li>
+  </ol>
+
+  <h2>Example backtest table (illustrative only — not real picks)</h2>
+  <p>Below is an example template filled with illustrative data to show layout. <strong>Do not</strong> treat the numbers as factual performance of 5StarsStocks — they are sample rows to demonstrate the calculation format.</p>
+
+  <table border="1" cellpadding="8" style="border-collapse:collapse;width:100%;margin-bottom:14px;">
+    <thead style="background:#eef7ff;">
+      <tr>
+        <th>Signal Date</th>
+        <th>Ticker</th>
+        <th>Star at Signal</th>
+        <th>Entry Date</th>
+        <th>Entry Price</th>
+        <th>Exit Date</th>
+        <th>Exit Price</th>
+        <th>Gross Return %</th>
+        <th>Costs+Slippage %</th>
+        <th>Net Return %</th>
+        <th>Notes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Illustrative rows only -->
+      <tr>
+        <td>2025-01-10</td>
+        <td>EXMP</td>
+        <td>5</td>
+        <td>2025-01-13</td>
+        <td>$50.00</td>
+        <td>2025-02-12</td>
+        <td>$55.00</td>
+        <td>10.00%</td>
+        <td>0.30%</td>
+        <td>9.70%</td>
+        <td>Example — hypothetical</td>
+      </tr>
+      <tr>
+        <td>2025-02-05</td>
+        <td>SAMP</td>
+        <td>4</td>
+        <td>2025-02-06</td>
+        <td>$20.00</td>
+        <td>2025-03-08</td>
+        <td>$18.00</td>
+        <td>-10.00%</td>
+        <td>0.30%</td>
+        <td>-10.30%</td>
+        <td>Illustrative loss</td>
+      </tr>
+      <tr>
+        <td>2025-03-01</td>
+        <td>ABCD</td>
+        <td>5</td>
+        <td>2025-03-02</td>
+        <td>$100.00</td>
+        <td>2025-03-31</td>
+        <td>$104.00</td>
+        <td>4.00%</td>
+        <td>0.30%</td>
+        <td>3.70%</td>
+        <td>Example profit</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>How to run this backtest yourself (tools & code)</h2>
+  <p>Two practical ways:</p>
+  <h3>Option A — Google Sheets / Excel (no coding)</h3>
+  <ol>
+    <li>Create a sheet with columns matching the table above.</li>
+    <li>Manually paste entry/exit prices from Yahoo Finance or your broker.</li>
+    <li>Use formulas to compute returns and aggregate statistics (AVERAGE, MEDIAN, COUNTIF for win rate).</li>
+  </ol>
+
+  <h3>Option B — Python (recommended for many trades)</h3>
+  <p>Use Python with libraries: <code>pandas</code>, <code>yfinance</code> (or Alpha Vantage), and save results as CSV. Example outline (not runnable here) — pseudocode:</p>
+  <pre>
+# pseudocode outline
+import pandas as pd
+import yfinance as yf
+
+signals = pd.read_csv('signals.csv')  # columns: signal_date,ticker,star
+results = []
+
+for row in signals.iterrows():
+    ticker = row['ticker']
+    entry_date = next_market_open_after(row['signal_date'])
+    exit_date = entry_date + pd.Timedelta(days=30)  # example hold
+    data = yf.download(ticker, start=entry_date, end=exit_date + 1)
+    entry_price = data.iloc[0]['Open']
+    exit_price = data.iloc[-1]['Close']
+    gross = (exit_price - entry_price) / entry_price
+    costs = 0.003  # 0.3% roundtrip example
+    net = gross - costs
+    results.append({...})
+df_results = pd.DataFrame(results)
+df_results.to_csv('backtest_results.csv', index=False)
+  </pre>
+
+  <h2>Metrics to report</h2>
+  <ul>
+    <li><strong>Average net return per trade</strong></li>
+    <li><strong>Median net return</strong></li>
+    <li><strong>Win rate</strong> (% of trades with net &gt; 0)</li>
+    <li><strong>Compound return</strong> (if rebalancing or reinvesting)</li>
+    <li><strong>Max drawdown</strong> during the test</li>
+    <li><strong>Benchmark comparison</strong> (e.g., S&amp;P 500 over same 6 months)</li>
+  </ul>
+
+  <h2>Common pitfalls and how to avoid them</h2>
+  <ul>
+    <li><strong>Survivorship bias:</strong> Don’t omit delisted or suspended stocks — include them in the dataset.</li>
+    <li><strong>Look-ahead bias:</strong> Only use information available on the signal date — do not use future data.</li>
+    <li><strong>Overfitting:</strong> Avoid tailoring rules to past winners — keep rules fixed before testing.</li>
+    <li><strong>Data quality:</strong> Archive original price snapshots and rating screenshots for auditability.</li>
+  </ul>
+
+  <h2>Interpreting results</h2>
+  <p>If your backtest shows outperformance versus the benchmark, ask:</p>
+  <ul>
+    <li>Were transaction costs and slippage modeled conservatively?</li>
+    <li>Does outperformance persist across different market conditions?</li>
+    <li>Is the sample size large enough to be statistically meaningful?</li>
+  </ul>
+
+  <h2>Conclusion — what you should do next</h2>
+  <p>TodayLite encourages transparency: if you want claims about “5StarsStocks’ 6-month returns,” demand a reproducible backtest with raw signals and prices. Use the method and templates in this article to run your own test or ask the platform for raw signal archives. If you’d like, I can:</p>
+  <ul>
+    <li>Provide a downloadable CSV template for the signals/results table.</li>
+    <li>Help write the Python script (complete, runnable) to fetch prices and compute returns for a specified 6-month window.</li>
+    <li>Run a mock backtest using public price data (I will not invent platform signals; you must supply the signal list or give permission to collect visible historical rating snapshots).</li>
+  </ul>
+
+  <p><strong>Related TodayLite articles:</strong> <a href="how-does-5starsstocks-rating-system-work.html">How Does the 5StarsStocks Five-Star Rating System Work?</a> | <a href="is-5starsstocks-safe.html">Is 5StarsStocks.com Safe for New Investors?</a></p>
+
+</article>
+</body>
+</html>
