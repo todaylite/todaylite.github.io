@@ -1,0 +1,82 @@
+<html>
+<head>
+  <meta name="google-site-verification" content="poNBfHrvDAlmcsKr_VrMQgtMtQKhJa0lpFDXfWAt54Y" />
+ <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-189M5X01BR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-189M5X01BR');
+</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>	
+body{padding-top:70px;padding-left:20px;padding-right:20px;}
+</style></head>
+<body>	
+<div style="max-width:350px; background:#fff; border-radius:12px; overflow:hidden; box-shadow:0 4px 10px rgba(0,0,0,0.1); font-family:Arial, sans-serif;">
+  <!-- Image -->
+  <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEicLhtjY8fsVA9tv_s9SymQ5b4NxonSYaoBqueG_YGKSuoSPTZLRRnrS8SoYG7ShdlT_DwsMM1Zo8PYHGVxaiqZZvKbKnckLGhixv57p7mQCqbOrpIjpf5gXCXGYLtRsauZucOtzI7tkw9G7JoQhyphenhyphenOAoIAIGSsZuQ03cZPyUqaFhNAVl-zo5ICyv5CJvXnr/s1600/Screenshot_2025-08-15-01-47-45-682_com.miui.gallery.webp" 
+       alt="Inferno on Chios Island" style="width:100%; height:auto; display:block;">
+  
+  <!-- Content -->
+  <div style="padding:15px;">
+    <h3 style="margin:0; font-size:18px; font-weight:bold; color:#000;">
+      Inferno on Chios Island - Villages Evacuated
+    </h3>
+    <p style="margin:8px 0; font-size:14px; color:#555;">
+      Firefighters are battling a massive wildfire near Pispilounta, Chios Island, forcing evacuations and urgent safety measures for residents...
+    </p>
+    <p style="margin:0; font-size:13px; color:#777;">August 14, 2025</p>
+    <p style="display:block;color:#777;"> ❤ <span id="shareCount">0</span></p>
+    
+    <!-- Button -->
+<center>    <a href="https://eloanwarehouse.blogspot.com/p/inferno-on-chios-island-villages.html" target="_blank" 
+       style="display:inline-block; margin-top:10px; padding:8px 16px; background:black; color:white; border-radius:20px; text-decoration:none; font-size:14px;" id="shareBtn">
+      Read More
+    </a></center>
+  </div>
+</div>
+
+
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+
+<script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyCvS35O-TEWh7YBA28sXa1VEzozwOYR6Y4",
+    authDomain: "todaylite-github-share.firebaseapp.com",
+    databaseURL: "https://todaylite-github-share-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "todaylite-github-share",
+    storageBucket: "todaylite-github-share.firebasestorage.app",
+    messagingSenderId: "149613187050",
+    appId: "1:149613187050:web:87e2e35d4e76924ceaac93",
+    measurementId: "G-KD18PK3VBZ"
+  };
+
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.database();
+
+  // Unique article id based on URL path
+  const articleId = window.location.pathname
+    .replace(/\//g, "-")
+    .substring(1)
+    .replace(/\.[^/.]+$/, "") || "default-article";
+
+  console.log("Article ID:", articleId);
+
+  const shareCountRef = db.ref("shares/" + articleId);
+
+  shareCountRef.on("value", snapshot => {
+    const count = snapshot.val() || 0;
+    document.getElementById("shareCount").textContent = count;
+  });
+
+  document.getElementById("shareBtn").addEventListener("click", () => {
+    shareCountRef.transaction(current => (current || 0) + 1);
+  });
+</script>
+</body>
+
+</html>
