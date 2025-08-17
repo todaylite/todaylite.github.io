@@ -1,0 +1,139 @@
+<html>
+<head>
+  <meta name="google-site-verification" content="poNBfHrvDAlmcsKr_VrMQgtMtQKhJa0lpFDXfWAt54Y" />
+ <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-189M5X01BR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-189M5X01BR');
+</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>	
+body{padding-top:70px;padding-left:20px;padding-right:20px;}
+</style>
+
+
+
+<style>
+    .video-container {
+      position: relative;
+      display: inline-block;
+  /* apni image size ke hisab se adjust karein */
+    }
+
+    .video-container img {
+      width: 100%;
+      display: block;
+      border-radius: 10px;
+    }
+
+    .play-btn {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 50%;
+      border:1px solid white;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      transition: 0.3s;
+      animation: fadePulse 2s infinite; /* animation lagayi */
+    }
+
+    .play-btn:hover {
+      background: rgba(0, 0, 0, 0.8);
+    }
+
+    .play-btn::before {
+      content: "▶";
+      color: white;
+      font-size: 28px;
+      margin-left: 4px; /* triangle center align */
+    }
+    
+     /* Fade animation */
+    @keyframes fadePulse {
+      0% { opacity: 0.4; transform: translate(-50%, -50%) scale(1); }
+      50% { opacity: 1; transform: translate(-50%, -50%) scale(1.1); }
+      100% { opacity: 0.4; transform: translate(-50%, -50%) scale(1); }
+    }
+    
+  </style>
+
+</head>
+<body>
+	  
+<div style="max-width:350px; background:#fff; border-radius:12px; overflow:hidden; box-shadow:0 4px 10px rgba(0,0,0,0.1); font-family:Arial, sans-serif;" id="shareBtn">
+  <!-- Image -->
+  	  <div class="video-container" >
+  <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh8pHzJ5Jrf4Uc41uFO1gefG766ods-wOlPil57mvP57aGQXGj2w1_MhgIiSC3U-HkuBCvBRcHOvkRQ-wW4-mN1mBrav-kSsVq3hoJpEg9Hf7qdxSV4vO10o8oEQvGVzpGIo9AK7FWw8P3W41bgn049qT400ZL8ApE6zMkkLgCfwpQETRCCgHTDMqwf0r1G/s1600/IMG_20250817_080125_415.jpg" 
+       alt="Inferno on Chios Island" style="width:100%; height:auto; display:block;">
+       <a href="https://eloanwarehouse.blogspot.com/p/massive-protest-at-white-house-where.html">	  <div class="play-btn"></div></a></div>
+  
+  <!-- Content -->
+  <div style="padding:15px;">
+    <h3 style="margin:0; font-size:18px; font-weight:bold; color:#000;">
+      Massive protest at the White House where the National Guard is stationed. This is beautiful... 
+    </h3>
+    <p style="margin:8px 0; font-size:14px; color:#555;">
+         </p>
+    <p style="margin:0; font-size:13px; color:#777;">August 14, 2025</p>
+    <p style="display:block;color:#777;"> &nbsp;&nbsp;&nbsp;&nbsp;❤ <span id="shareCount">0</span></p>
+    
+    <!-- Button -->
+<center>    <a href="https://eloanwarehouse.blogspot.com/p/massive-protest-at-white-house-where.html" target="_blank" 
+       style="display:inline-block; margin-top:10px; padding:8px 16px; background:black; color:white; border-radius:20px; text-decoration:none; font-size:14px;">
+      Read More
+    </a></center>
+  </div>
+</div>
+
+
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+
+<script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyCvS35O-TEWh7YBA28sXa1VEzozwOYR6Y4",
+    authDomain: "todaylite-github-share.firebaseapp.com",
+    databaseURL: "https://todaylite-github-share-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "todaylite-github-share",
+    storageBucket: "todaylite-github-share.firebasestorage.app",
+    messagingSenderId: "149613187050",
+    appId: "1:149613187050:web:87e2e35d4e76924ceaac93",
+    measurementId: "G-KD18PK3VBZ"
+  };
+
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.database();
+
+  // Unique article id based on URL path
+  const articleId = window.location.pathname
+    .replace(/\//g, "-")
+    .substring(1)
+    .replace(/\.[^/.]+$/, "") || "default-article";
+
+  console.log("Article ID:", articleId);
+
+  const shareCountRef = db.ref("shares/" + articleId);
+
+  shareCountRef.on("value", snapshot => {
+    const count = snapshot.val() || 0;
+    document.getElementById("shareCount").textContent = count;
+  });
+
+  document.getElementById("shareBtn").addEventListener("click", () => {
+    shareCountRef.transaction(current => (current || 0) + 1);
+  });
+</script>
+</body>
+
+</html>
