@@ -1,1 +1,282 @@
-Everyday at 8 PM, DC residents in a moment of solidarity do nightly porch protest against Trump’s takeover.
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Live Beautiful Wall Clock</title>
+  <style>
+    :root {
+      --bg1: #0f172a; /* slate-900 */
+      --bg2: #1e293b; /* slate-800 */
+      --accent: #38bdf8; /* sky-400 */
+      --accent2: #a78bfa; /* violet-400 */
+      --text: #e2e8f0; /* slate-200 */
+      --muted: #94a3b8; /* slate-400 */
+      --ring: rgba(56, 189, 248, 0.45);
+      --glass: rgba(255, 255, 255, 0.08);
+      --glass-strong: rgba(255, 255, 255, 0.16);
+    }* { box-sizing: border-box; }
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  color: var(--text);
+  background: radial-gradient(1200px 800px at 20% 20%, #0ea5e9 0%, transparent 55%),
+              radial-gradient(900px 700px at 80% 80%, #8b5cf6 0%, transparent 60%),
+              linear-gradient(135deg, var(--bg1), var(--bg2));
+  overflow: hidden;
+}
+
+.container {
+  height: 100%;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.clock-card {
+  position: relative;
+  display: grid;
+  gap: 18px;
+  place-items: center;
+  padding: 28px 28px 22px;
+  width: min(92vw, 780px);
+  backdrop-filter: blur(14px) saturate(120%);
+  background: linear-gradient(180deg, var(--glass-strong), var(--glass));
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 28px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.08);
+  animation: pop 700ms cubic-bezier(.2,.8,.2,1);
+}
+
+@keyframes pop { from { transform: translateY(8px) scale(.98); opacity: 0 } }
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.brand {
+  display: flex; align-items: center; gap: 12px;
+  letter-spacing: .4px; font-weight: 600;
+}
+
+.dot {
+  width: 10px; height: 10px; border-radius: 999px;
+  background: conic-gradient(from 0deg, var(--accent), var(--accent2));
+  box-shadow: 0 0 20px var(--accent);
+  animation: pulse 2.4s infinite ease-in-out;
+}
+
+@keyframes pulse { 0%,100%{ transform: scale(1)} 50%{ transform: scale(1.25)} }
+
+.controls { display:flex; gap: 8px; align-items:center; }
+.btn {
+  appearance: none; border: 0; cursor: pointer;
+  padding: 10px 14px; border-radius: 12px;
+  background: rgba(15, 23, 42, .35);
+  color: var(--text); font-weight: 600; letter-spacing: .2px;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.06), 0 0 0 1px rgba(255,255,255,.08);
+  transition: transform .12s ease, box-shadow .2s ease, background .2s ease;
+}
+.btn:hover { transform: translateY(-1px); box-shadow: 0 10px 24px rgba(0,0,0,.3), 0 0 0 2px var(--ring); }
+
+/* Analog clock */
+.analog-wrap { position: relative; width: min(70vw, 380px); aspect-ratio: 1; }
+
+.dial {
+  position: absolute; inset: 0; border-radius: 999px;
+  background: radial-gradient(circle at 50% 40%, rgba(255,255,255,.22), rgba(255,255,255,.08) 45%, rgba(0,0,0,.25) 100%),
+              linear-gradient(180deg, rgba(255,255,255,.06), rgba(0,0,0,.2));
+  box-shadow: inset 0 2px 6px rgba(0,0,0,.35), 0 20px 50px rgba(2,6,23,.55);
+  border: 1px solid rgba(255,255,255,.14);
+}
+
+.dial::after { /* inner ring */
+  content: ""; position: absolute; inset: 12px; border-radius: 999px;
+  background: rgba(255,255,255,.02);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.1), inset 0 0 55px rgba(56,189,248,.15);
+}
+
+.ticks, .nums, .hands { position: absolute; inset: 0; }
+
+.tick { position: absolute; left: 50%; top: 6px; width: 2px; height: 14px; background: rgba(226,232,240,.9); transform-origin: center 184px; opacity: .85; }
+.tick.major { height: 24px; width: 3px; background: #fff; opacity: 1; }
+
+.num { position: absolute; inset: 0; display: grid; place-items: center; font-weight: 700; color: #fff; }
+.num span { position: absolute; transform-origin: center; font-variant-numeric: tabular-nums; text-shadow: 0 2px 10px rgba(0,0,0,.5); }
+
+.hand { position: absolute; left: 50%; top: 50%; transform-origin: 50% 90%; transform: translate(-50%, -90%) rotate(0deg); }
+.hand.hour { width: 8px; height: 112px; background: linear-gradient(180deg, #fff, #e2e8f0); border-radius: 6px; box-shadow: 0 6px 24px rgba(0,0,0,.45); }
+.hand.min  { width: 6px; height: 150px; background: linear-gradient(180deg, #cffafe, #7dd3fc); border-radius: 5px; box-shadow: 0 6px 24px rgba(0,0,0,.45); }
+.hand.sec  { width: 2px; height: 165px; background: linear-gradient(180deg, #f43f5e, #fda4af); border-radius: 2px; box-shadow: 0 6px 24px rgba(0,0,0,.45); }
+
+.cap { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 18px; height: 18px; border-radius: 999px; background: #fff; box-shadow: inset 0 0 0 2px rgba(0,0,0,.15), 0 6px 18px rgba(0,0,0,.4); }
+
+/* Digital readout */
+.digital {
+  display: grid; gap: 6px; place-items: center;
+  padding: 10px 14px; border-radius: 14px; text-align: center;
+  background: rgba(15, 23, 42, .45);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.08);
+  letter-spacing: .6px;
+}
+.time { font-size: clamp(28px, 5vw, 52px); font-weight: 800; font-variant-numeric: tabular-nums; }
+.date { font-size: clamp(12px, 2.5vw, 16px); color: var(--muted); }
+
+.footer { opacity: .8; font-size: 12px; }
+
+/* Fullscreen helper */
+.fs-hint { font-size: 12px; color: var(--muted); }
+
+/* Responsive layout */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  width: 100%;
+  place-items: center;
+}
+
+@media (min-width: 860px) {
+  .grid { grid-template-columns: 1fr 1fr; gap: 24px; align-items: center; }
+}
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="clock-card">
+      <div class="header">
+        <div class="brand"><span class="dot"></span> Live Wall Clock</div>
+        <div class="controls">
+          <button class="btn" id="toggle-12h" aria-pressed="false">12‑hour</button>
+          <button class="btn" id="toggle-seconds" aria-pressed="true">Show seconds</button>
+          <button class="btn" id="toggle-fullscreen">Fullscreen</button>
+        </div>
+      </div><div class="grid">
+    <!-- Analog Clock -->
+    <div class="analog-wrap" aria-label="Analog clock" role="img">
+      <div class="dial"></div>
+      <div class="ticks" id="ticks"></div>
+      <div class="nums" id="nums"></div>
+      <div class="hands">
+        <div class="hand hour" id="hour"></div>
+        <div class="hand min" id="min"></div>
+        <div class="hand sec" id="sec"></div>
+        <div class="cap"></div>
+      </div>
+    </div>
+
+    <!-- Digital Readout -->
+    <div class="digital">
+      <div class="time" id="time">00:00</div>
+      <div class="date" id="date">—</div>
+      <div class="fs-hint">Press <strong>Fullscreen</strong> for a clean wall view.</div>
+    </div>
+  </div>
+
+  <div class="footer">Built with HTML • CSS • JavaScript</div>
+</div>
+
+  </div>  <script>
+    // ----- Build Ticks & Numbers -----
+    (function buildTicks() {
+      const ticksEl = document.getElementById('ticks');
+      const numsEl = document.getElementById('nums');
+      const total = 60;
+      for (let i = 0; i < total; i++) {
+        const t = document.createElement('div');
+        t.className = 'tick' + (i % 5 === 0 ? ' major' : '');
+        const deg = i * 6; // 360/60
+        t.style.transform = `translateX(-50%) rotate(${deg}deg)`;
+        ticksEl.appendChild(t);
+      }
+      const radius = 152; // position for numerals
+      for (let h = 1; h <= 12; h++) {
+        const span = document.createElement('span');
+        const angle = (h / 12) * 2 * Math.PI - Math.PI / 2; // start at top
+        const x = Math.cos(angle) * radius;
+        const y = Math.sin(angle) * radius;
+        span.textContent = h;
+        span.style.left = `calc(50% + ${x}px)`;
+        span.style.top = `calc(50% + ${y}px)`;
+        span.style.transform = 'translate(-50%, -50%)';
+        const wrapper = document.createElement('div');
+        wrapper.className = 'num';
+        wrapper.appendChild(span);
+        numsEl.appendChild(wrapper);
+      }
+    })();
+
+    // ----- State -----
+    let showSeconds = true;
+    let use12h = false;
+
+    const elTime = document.getElementById('time');
+    const elDate = document.getElementById('date');
+    const elHour = document.getElementById('hour');
+    const elMin = document.getElementById('min');
+    const elSec = document.getElementById('sec');
+
+    // Smooth second hand using requestAnimationFrame
+    function update() {
+      const now = new Date();
+      const ms = now.getMilliseconds();
+      const s = now.getSeconds() + ms / 1000;
+      const m = now.getMinutes() + s / 60;
+      const h = (now.getHours() % 12) + m / 60;
+
+      elSec.style.transform = `translate(-50%, -90%) rotate(${s * 6}deg)`; // 6 deg per second
+      elMin.style.transform = `translate(-50%, -90%) rotate(${m * 6}deg)`;
+      elHour.style.transform = `translate(-50%, -90%) rotate(${h * 30}deg)`; // 30 deg per hour
+
+      // Digital
+      const opts = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+      elDate.textContent = new Intl.DateTimeFormat(undefined, opts).format(now);
+
+      const hour = now.getHours();
+      const minute = now.getMinutes();
+      const second = now.getSeconds();
+
+      const hours12 = hour % 12 || 12;
+      if (use12h) {
+        elTime.textContent = `${pad(hours12)}:${pad(minute)}${showSeconds ? ':' + pad(second) : ''} ${hour < 12 ? 'AM' : 'PM'}`;
+      } else {
+        elTime.textContent = `${pad(hour)}:${pad(minute)}${showSeconds ? ':' + pad(second) : ''}`;
+      }
+
+      elSec.style.display = showSeconds ? 'block' : 'none';
+
+      requestAnimationFrame(update);
+    }
+
+    function pad(n) { return n.toString().padStart(2, '0'); }
+
+    // Controls
+    document.getElementById('toggle-12h').addEventListener('click', (e) => {
+      use12h = !use12h;
+      e.currentTarget.setAttribute('aria-pressed', String(use12h));
+      e.currentTarget.textContent = use12h ? '24‑hour' : '12‑hour';
+    });
+
+    document.getElementById('toggle-seconds').addEventListener('click', (e) => {
+      showSeconds = !showSeconds;
+      e.currentTarget.setAttribute('aria-pressed', String(showSeconds));
+      e.currentTarget.textContent = showSeconds ? 'Show seconds' : 'Hide seconds';
+    });
+
+    document.getElementById('toggle-fullscreen').addEventListener('click', async () => {
+      if (!document.fullscreenElement) {
+        await document.documentElement.requestFullscreen().catch(() => {});
+      } else {
+        await document.exitFullscreen().catch(() => {});
+      }
+    });
+
+    // Kick off
+    requestAnimationFrame(update);
+  </script></body>
+</html>
