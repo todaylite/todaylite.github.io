@@ -1,21 +1,25 @@
-importScripts("https://www.gstatic.com/firebasejs/9.6.11/firebase-app.js");
-importScripts("https://www.gstatic.com/firebasejs/9.6.11/firebase-messaging.js");
+importScripts('https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js');
+importScripts('https://www.gstatic.com/firebasejs/9.23.0/firebase-messaging-compat.js');
 
-// Firebase config same jo index.html me use kiya
 firebase.initializeApp({
-  apiKey: "AIzaSyAwMir8E-5e4fe-hdwzIHxfLzdnKa9LK20",
-  projectId: "copyprompt-app",
-  messagingSenderId: "896337421281",
-  appId: "1:896337421281:web:35ee45a7b0a76f437d68a0"
+  apiKey: "AIzaSyCvS35O-TEWh7YBA28sXa1VEzozwOYR6Y4",
+  authDomain: "todaylite-github-share.firebaseapp.com",
+  projectId: "todaylite-github-share",
+  storageBucket: "todaylite-github-share.firebasestorage.app",
+  messagingSenderId: "149613187050",
+  appId: "1:149613187050:web:649b83f550a8c08aeaac93"
 });
 
 const messaging = firebase.messaging();
 
-// Background notifications
-messaging.onBackgroundMessage((payload) => {
-  console.log("Background message received: ", payload);
-  self.registration.showNotification(payload.notification.title, {
+messaging.onBackgroundMessage(function(payload) {
+  console.log('[firebase-messaging-sw.js] Received background message ', payload);
+
+  const notificationTitle = payload.notification.title;
+  const notificationOptions = {
     body: payload.notification.body,
-    icon: "/icon.png" // apna app icon
-  });
+    icon: '/icon.png'
+  };
+
+  self.registration.showNotification(notificationTitle, notificationOptions);
 });
