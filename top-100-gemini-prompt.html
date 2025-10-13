@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  
+  
+  <meta name="google-site-verification" content="poNBfHrvDAlmcsKr_VrMQgtMtQKhJa0lpFDXfWAt54Y" />
+ <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-189M5X01BR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-189M5X01BR');
+</script>
+  
+  
+  
+  <title>Todaylite</title>
+  <style>
+	  html{
+      scroll-behavior: smooth;
+    }
+  	.hamburger {
+  	background:red;height:auto;
+  display:block;
+  font-size: 26px;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+  
+  
+#wsite-title{
+	font-size: 2em;       /* h1 size */
+  font-weight: bold;
+  background: linear-gradient(90deg, #ff7e5f, #feb47b, #86a8e7, #7f7fd5);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient-animation 3s ease-in-out infinite;
+  background-size: 300%;
+  margin:0;
+}
+
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.headbtn{
+      background: #000;
+      color: white;
+      padding: 10px 15px;
+      border-radius:50px;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+</style>
+
+  <style>
+    body {
+      margin: 0;
+      background: #f2f5fc;
+      font-family: Arial, sans-serif;
+    }
+
+    headerz {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      
+      
+      
+    }
+    header{
+  background:white;
+  padding: 1rem 0;
+  text-align: center;
+  position: fixed;
+      top: 0;
+      width: 100%;
+  color: white;
+  z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      max-width: 1200px;
+      margin: 95px auto 40px;
+      padding: 0 10px;
+      gap: 20px;
+    }
+
+    main {
+      flex: 3;
+    }
+
+    aside {
+      flex: 1;
+    }
+
+    .post-card {
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .post-card img {
+      width: 100%;
+      height: auto;
+    }
+
+    .post-content {
+      padding: 15px;
+      position: relative;
+    }
+
+    .post-title {
+      font-size: 1.3em;
+      margin: 10px 0;
+      color: #000;
+    }
+
+    .post-excerpt {
+      color: #444;
+    }
+
+    .post-meta {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 15px;
+      align-items: center;
+    }
+
+    .date {
+      color: #555;
+      font-size: 0.9em;
+    }
+
+    .read-more {
+      background: #000;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 25px;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .read-more:hover {
+      background: #007bff;
+      color: white;
+    }
+
+    aside {
+      background:transparent;
+      border-radius: 10px;
+      height: fit-content;
+    }
+
+    aside h2 {
+      font-size: 1.2em;
+      margin-bottom: 10px;
+    }
+
+    .popular-post {
+      margin-bottom: 10px;
+      font-size: 0.95em;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 5px;
+    }
+
+    footer {
+      background: #1a1a1a;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 30px;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+      }
+    }
+    
+    
+    
+     .menu-icon {
+      width: 25px;
+      height: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      cursor: pointer;
+    }
+
+    .menu-icon div {
+      height: 4px;
+      background: red;
+      border-radius: 2px;
+    }
+
+    .divdemo1{
+background: white;
+      border-radius: 10px;
+      padding: 15px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      height: fit-content;
+      margin-bottom: 20px;
+}
+
+.post-container2{     
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+      display: flex;
+      flex-direction: column;
+      padding:20px;
+      background:white;
+    }
+    
+    .post-container2 img {
+      width: 100%;
+      height: auto;
+      border-radius:10px;      
+    }
+    
+      .post-title {
+      font-size: 2em;
+      margin-bottom: 10px;
+      color: #000;
+    }
+
+    .post-meta {
+      color: #666;
+      font-size: 0.9em;
+      margin-bottom: 20px;
+      border-top: 1px solid #ddd;
+      border-bottom: 1px solid #ddd;
+      padding-top:10px;
+      padding-bottom:10px;    
+    }
+    
+    
+    .post-content h2 {
+      font-size: 1.5em;
+      margin: 25px 0 10px;
+      color: #111;
+    }
+       .post-content p {
+      font-size: 1.05em;
+      line-height: 1.7;
+      color: #333;
+      margin-bottom: 16px;
+    }
+        .post-image {
+      width: 100%;
+      max-height: 400px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+    
+    
+    
+    
+    
+     #toc {
+      background: #fff;
+      padding: 15px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      margin-bottom: 20px;
+      max-width: 300px;
+    }
+
+    #toc .toc-header {
+      font-weight: bold;
+      margin-bottom: 10px;
+      font-size: 18px;
+      color: #333;
+    }
+
+    #toc ul {
+      list-style-type: disc; /* • bullets */
+      padding-left: 20px;
+    }
+
+    #toc li {
+      margin-bottom: 5px;
+    }
+
+    #toc a {
+      text-decoration: none;
+      color: #333;
+      font-size: 14px;
+    }
+
+    #toc a:hover {
+      color: #007bff;
+    }
+
+
+
+
+
+}
+#toc .toc-header {
+  font-weight: bold;
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+#toc ol {
+  list-style-type: number; /* show dots instead of numbers */
+  padding-left: 20px;
+  margin: 0;
+}
+#toc li {
+  margin: 6px 0;
+}
+#toc a {
+  text-decoration: none;
+  color: #333;
+}
+#toc a:hover {
+  text-decoration: underline;
+  color: #007BFF;
+}
+
+
+  </style>
+</head>
+<body>
+
+  <header>
+    <div id="wsite-title"><a href="https://todaylite.github.io/">TODAYLITE</a></div>
+               
+
+  </header>
+
+  <div class="container">
+    <main>
+    	
+    	 <!-- Blog Post Start -->
+      <div class="post-container2">
+      	  <h2 class="post-title">Top 100 Gemini AI Prompts for Men and Woman: Create Stunning 8K Cinematic Portraits</h2>
+    <div class="post-meta">Published on October 13, 2025 | Author : Akshay</div>
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEipNtQqzkeJQExPvs2IygYSRAiSqHFzdz1c-I16lWL3AgljR5I8edKoOBeI2C3sjTgTzNEZOz6ksLyFU4cwJ9-7eyIKyzaeztz9EK4EFFSrPVxnpRtISnbRIecwc1UTlL76jrEY1XAhpruy2UUTPCjK4rni0HR9Juz-8FYy7KI0k3CJNTD62j5BZ1xw55Ga/s1600/copyprompt-cover_20251013_154320_0000.webp" class="post-image" alt="">
+        
+        
+        
+          <p class="post-excerpt"><b>Quick Summary</b> :This is a short paragraph summary for the blog post. It gives a quick overview of the content.This is a short paragraph summary for the blog post. It gives a quick overview of the content.</p>
+          
+
+          
+          
+          
+          
+      <p>Your credit score plays a vital role in determining your financial credibility. In 2025, lenders are more data-driven than ever. Here's how to stay ahead.</p>
+      
+      
+      
+      <p>With the rise of AI-generated imagery, Gemini AI has become a powerful tool for artists, photographers, and content creators. Whether you’re designing portraits, character concepts, or cinematic visuals, the right prompts can drastically elevate the quality of your creations. In this article, we’ve compiled the top 100 Gemini AI prompts for men and women that will help you produce breathtaking 8K cinematic portraits.</p>
+      
+      
+      <ol  id="toc"> </ol>
+      <h2>1. Introduction to Gemini AI Portraits</h2>
+<p>Gemini AI is one of the leading AI tools for generating high-resolution portraits. By combining advanced text-to-image algorithms with cinematic styling, it allows creators to produce hyper-realistic 8K images that look like professional photographs or movie stills. Using carefully crafted prompts is key to achieving stunning results.</p>
+
+<h2>2. Tips for Crafting Cinematic AI Prompts</h2>
+<ul>
+<li><strong>Specify Resolution:</strong> Always mention “8K” or “ultra HD” for detailed imagery.</li>
+<li><strong>Include Style Descriptors:</strong> Words like “cinematic,” “dramatic lighting,” “golden hour,” or “soft shadows” help refine the visual style.</li>
+<li><strong>Mood & Expression:</strong> Indicate emotions such as “confident,” “mysterious,” “serene,” or “joyful.”</li>
+<li><strong>Clothing & Accessories:</strong> Add details like “formal suit,” “flowing gown,” “modern streetwear,” or “vintage accessories.”</li>
+<li><strong>Background Setting:</strong> Mention “cityscape,” “forest,” “studio lighting,” or “futuristic neon background” for context.</li>
+</ul>
+
+<h2>3. Top 50 Gemini AI Prompts for Women</h2>
+<p>Here are 50 highly effective prompts for generating stunning AI portraits of women:</p>
+<ol>
+<li>Beautiful young woman with flowing hair, golden hour lighting, cinematic 8K portrait</li>
+<li>Elegant woman in a silk gown, dramatic shadows, ultra-realistic 8K</li>
+<li>Confident businesswoman in modern office, soft cinematic lighting, 8K resolution</li>
+<li>Fantasy warrior woman, glowing armor, forest background, ultra-detailed 8K</li>
+<li>Mysterious woman with hooded cloak, misty background, cinematic portrait, 8K</li>
+<li>Woman in vintage 1920s attire, sepia tones, dramatic lighting, 8K</li>
+<li>Serene female yoga instructor, sunrise backdrop, cinematic 8K portrait</li>
+<li>Young woman with freckles, natural makeup, soft focus, 8K ultra-realistic</li>
+<li>Futuristic cyberpunk female, neon lights, rainy street, cinematic 8K</li>
+<li>Beautiful mermaid, underwater glow, cinematic lighting, 8K</li>
+<li>Woman in traditional Indian saree, sunset background, ultra-detailed 8K</li>
+<li>Modern fashion model, street style, golden hour, cinematic 8K</li>
+<li>Elegant queen in medieval dress, castle backdrop, cinematic lighting, 8K</li>
+<li>Smiling woman with long curly hair, studio lighting, 8K ultra HD</li>
+<li>Strong female superhero, city skyline, cinematic portrait, 8K</li>
+<li>Woman in mystical forest, glowing fireflies, cinematic 8K</li>
+<li>Portrait of a female painter, messy studio, dramatic lighting, 8K</li>
+<li>Elegant woman holding a vintage book, soft sunlight, 8K cinematic portrait</li>
+<li>Woman in leather jacket, urban background, moody cinematic lighting, 8K</li>
+<li>Fantasy elven woman, ethereal glow, magical forest, 8K</li>
+<li>Portrait of a dancer, flowing dress, dynamic motion blur, 8K</li>
+<li>Glamorous red carpet shot, evening gown, spotlight, 8K</li>
+<li>Young woman with braided hair, natural background, soft cinematic light, 8K</li>
+<li>Powerful CEO woman, sleek office, dramatic 8K portrait</li>
+<li>Mysterious sorceress, dark robes, glowing magical staff, cinematic 8K</li>
+<li>Elegant bride in wedding dress, sunset garden, cinematic 8K</li>
+<li>Portrait of a female scientist, lab background, 8K realistic lighting</li>
+<li>Street style fashion, urban graffiti backdrop, 8K cinematic portrait</li>
+<li>Woman in flowing red dress, desert dunes, cinematic lighting, 8K</li>
+<li>Portrait of a violinist, spotlight, dramatic shadows, 8K ultra-realistic</li>
+<li>Elegant woman sipping tea, cozy cafe, cinematic 8K</li>
+<li>Fantasy fairy woman, glowing wings, enchanted forest, 8K</li>
+<li>Modern warrior woman, futuristic armor, city at night, 8K</li>
+<li>Woman in traditional Japanese kimono, cherry blossoms, 8K cinematic portrait</li>
+<li>Confident model in sunglasses, beach sunset, ultra HD 8K</li>
+<li>Female pilot in cockpit, dramatic lighting, cinematic 8K</li>
+<li>Elegant woman in winter fashion, snow-covered city, 8K</li>
+<li>Young woman with bohemian style, festival backdrop, cinematic 8K</li>
+<li>Portrait of a female writer, cozy room, warm light, 8K</li>
+<li>Fantasy sorceress with glowing eyes, magical energy, 8K</li>
+<li>Woman in futuristic cyber suit, neon city, cinematic 8K</li>
+<li>Elegant actress, classic Hollywood lighting, 8K ultra-realistic</li>
+<li>Strong female adventurer, jungle background, cinematic portrait, 8K</li>
+<li>Portrait of a singer, stage spotlight, dramatic shadows, 8K</li>
+<li>Elegant woman with pearl necklace, soft sunlight, 8K ultra-realistic</li>
+<li>Fantasy princess, castle balcony, cinematic 8K lighting</li>
+<li>Confident female athlete, stadium backdrop, cinematic portrait, 8K</li>
+<li>Modern woman in business casual, city skyline, 8K cinematic lighting</li>
+<li>Portrait of a female traveler, mountain background, golden hour, 8K</li>
+<li>Elegant woman in velvet dress, vintage interior, cinematic 8K</li>
+<li>Fantasy archer woman, forest clearing, cinematic lighting, 8K</li>
+<li>Woman in flowing gown, ocean sunset, cinematic 8K portrait</li>
+<li>Young woman with natural makeup, soft studio lighting, 8K ultra-realistic</li>
+</ol>
+
+<h2>4. Top 50 Gemini AI Prompts for Men</h2>
+<p>Here are 50 highly effective prompts for generating stunning AI portraits of men:</p>
+<ol>
+<li>Handsome young man with chiseled jawline, cinematic lighting, 8K ultra HD portrait</li>
+<li>Confident businessman, sleek office, dramatic shadows, 8K</li>
+<li>Fantasy warrior man, glowing armor, forest battlefield, 8K cinematic portrait</li>
+<li>Mysterious man in trench coat, rainy street, cinematic 8K</li>
+<li>Elegant man in 1920s suit, sepia tones, cinematic lighting, 8K</li>
+<li>Adventurer in rugged landscape, golden hour lighting, ultra-realistic 8K</li>
+<li>Cyberpunk male character, neon-lit city, cinematic 8K portrait</li>
+<li>Young man with glasses, modern cafe background, soft lighting, 8K</li>
+<li>Fantasy sorcerer, glowing staff, dark castle, cinematic 8K</li>
+<li>Portrait of a male artist, messy studio, dramatic 8K lighting</li>
+<li>Strong athlete, stadium backdrop, cinematic lighting, 8K ultra-realistic</li>
+<li>Modern soldier, urban battlefield, dramatic shadows, 8K</li>
+<li>Handsome man in leather jacket, moody alleyway, 8K cinematic portrait</li>
+<li>Elegant king in royal attire, throne room, cinematic lighting, 8K</li>
+<li>Young musician, stage spotlight, cinematic 8K portrait</li>
+<li>Male superhero, city skyline, cinematic portrait, 8K</li>
+<li>Traveler in mountain range, sunset lighting, 8K ultra-realistic</li>
+<li>Futuristic male pilot, cockpit view, dramatic lighting, cinematic 8K</li>
+<li>Confident CEO, boardroom backdrop, 8K cinematic portrait</li>
+<li>Male adventurer in jungle, cinematic 8K lighting</li>
+<li>Handsome man with beard, studio lighting, 8K ultra HD</li>
+<li>Fantasy archer, mystical forest, cinematic 8K portrait</li>
+<li>Elegant man in tuxedo, gala event, soft spotlight, 8K</li>
+<li>Young man with casual style, urban street, cinematic 8K</li>
+<li>Mystical mage, glowing symbols, dark room, cinematic 8K</li>
+<li>Portrait of a chef, busy kitchen, dramatic lighting, 8K</li>
+<li>Male model, fashion shoot, studio lighting, 8K ultra-realistic</li>
+<li>Strong male adventurer, desert background, golden hour, cinematic 8K</li>
+<li>Male dancer in motion, flowing costume, dramatic lighting, 8K</li>
+<li>Elegant gentleman with cane, vintage street, cinematic 8K</li>
+<li>Young scientist, laboratory backdrop, cinematic portrait, 8K</li>
+<li>Futuristic cyberpunk male, neon lights, rainy streets, 8K ultra HD</li>
+<li>Male knight in shining armor, castle courtyard, cinematic lighting, 8K</li>
+<li>Handsome actor, Hollywood spotlight, cinematic 8K</li>
+<li>Male singer, stage performance, dramatic lighting, 8K ultra-realistic</li>
+<li>Portrait of a male painter, cozy studio, soft sunlight, cinematic 8K</li>
+<li>Elegant man with glasses, library background, cinematic portrait, 8K</li>
+<li>Fantasy warrior king, glowing sword, castle background, cinematic 8K</li>
+<li>Young man in streetwear, urban graffiti, cinematic 8K</li>
+<li>Confident male athlete, sports arena, dramatic lighting, 8K ultra-realistic</li>
+<li>Male traveler, coastal cliff, golden hour, cinematic 8K</li>
+<li>Elegant man in fur coat, winter cityscape, cinematic portrait, 8K</li>
+<li>Portrait of a monk, serene temple backdrop, cinematic 8K</li>
+<li>Futuristic soldier, sci-fi armor, neon battlefield, 8K ultra HD</li>
+<li>Strong male adventurer, river crossing, cinematic lighting, 8K</li>
+<li>Male actor in period costume, cinematic portrait, 8K</li>
+<li>Young man with thoughtful expression, soft studio light, 8K</li>
+<li>Elegant male detective, rainy city streets, cinematic 8K</li>
+<li>Fantasy male elf, enchanted forest, glowing aura, cinematic 8K</li>
+<li>Confident male speaker, auditorium backdrop, 8K cinematic lighting</li>
+<li>Handsome man with scarf, autumn park, cinematic 8K</li>
+<li>Male chef in professional kitchen, dramatic 8K lighting</li>
+<li>Portrait of a male pilot, airfield sunset, cinematic 8K</li>
+<li>Young musician, guitar in hand, stage lighting, 8K ultra-realistic</li>
+<li>Elegant man in casual suit, city skyline, cinematic 8K</li>
+<li>Fantasy warrior with battle scars, misty battlefield, 8K ultra HD</li>
+<li>Male artist painting, soft afternoon light, cinematic 8K</li>
+<li>Handsome man with modern hairstyle, studio portrait, 8K ultra-realistic</li>
+</ol>
+
+<h2>5. Conclusion</h2>
+<p>Using these 100 Gemini AI prompts, you can create ultra-detailed, cinematic 8K portraits for both men and women. By specifying style, lighting, mood, and environment in your prompts, Gemini AI can help you bring your creative visions to life with astonishing realism. Experiment with variations and combine ideas to develop your own signature AI 
+
+
+
+
+
+
+      
+
+<div class="post-meta">
+<span class="date">AKSHAYGX</span>
+<a href="#" class="read-more">Follow  Us</a>
+  </div>
+ 
+
+          
+          
+          
+          
+          
+        </div>
+      
+<!-- Blog Post End -->
+
+
+      
+  
+  
+        </div>
+      </div>
+      
+     
+      
+      
+    </main>
+
+
+  </div>
+
+  <footer>
+    &copy; 2025 Todaylite. All rights reserved.
+  </footer>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const toc = document.querySelector('#toc');
+    const postContainer = document.querySelector('.post-container2');
+    const headings = postContainer.querySelectorAll('h1, h2, h3, h4, h5, h6');
+
+    if (headings.length > 0 && toc) {
+      const isOrdered = toc.tagName.toLowerCase() === 'ol';
+      const tocList = document.createElement(toc.tagName.toLowerCase()); // ol or ul
+      tocList.classList.add('toc-list');
+      const header = document.createElement('div');
+      header.className = 'toc-header';
+      header.textContent = 'Table of Contents';
+
+      toc.innerHTML = '';
+      toc.appendChild(header);
+      toc.appendChild(tocList);
+
+      let currentLevel = parseInt(headings[0].tagName[1]);
+      let parents = [tocList];
+
+      headings.forEach((heading, index) => {
+        const level = parseInt(heading.tagName[1]);
+
+        if (!heading.id) {
+          heading.id = 'heading-' + index;
+        }
+
+        const li = document.createElement('li');
+        const link = document.createElement('a');
+        link.href = '#' + heading.id;
+        link.textContent = heading.textContent;
+        li.appendChild(link);
+
+        if (level > currentLevel) {
+          const nestedList = document.createElement(toc.tagName.toLowerCase());
+          const lastLi = parents[parents.length - 1].lastElementChild;
+          if (lastLi) {
+            lastLi.appendChild(nestedList);
+            parents.push(nestedList);
+          }
+        } else if (level < currentLevel) {
+          parents.splice(level - currentLevel);
+        }
+
+        currentLevel = level;
+        parents[parents.length - 1].appendChild(li);
+      });
+    }
+  });
+</script>
+
+
+
+
+
+
+</body>
+</html>
